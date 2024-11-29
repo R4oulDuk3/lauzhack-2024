@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Slf4j
 @SpringBootTest
 public class SpringOpenAiClientTest {
-	@Value("${openai.api-key}")
+	@Value("${spring.ai.openai.api-key}")
 	private String apiKey;
 	OpenAiApi openAiApi;
 	OpenAiChatOptions openAiChatOptions;
