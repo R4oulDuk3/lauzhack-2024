@@ -1,0 +1,62 @@
+<!-- control-panel.component.html -->
+<div class="control-panel-container">
+  <!-- Control Card -->
+  <mat-card class="control-card">
+    <mat-card-header>
+      <mat-card-title>Device Controls</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="controls-container">
+        <!-- Power Switch -->
+        <div class="control-row">
+          <span class="control-label">Device Power</span>
+          <mat-slide-toggle
+            [checked]="isDeviceOn"
+            (change)="onToggleChange($event)"
+            color="primary">
+            {{ isDeviceOn ? 'ON' : 'OFF' }}
+          </mat-slide-toggle>
+        </div>
+        <!-- Speed Slider -->
+        <div class="control-row">
+          <span class="control-label">Speed Control</span>
+          <mat-slider
+            min="0"
+            max="4"
+            step="1"
+            [discrete]="true"
+            [displayWith]="formatSpeedLabel"
+            [disabled]="!deviceOn"
+            class="speed-slider">
+            <input matSliderThumb
+                   [(ngModel)]="currentSpeedIndex"
+                   (valueChange)="onSpeedChange($event)">
+          </mat-slider>
+          <span class="speed-value">{{currentSpeedIndex}}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!-- System Info Table -->
+  <mat-card class="system-info-card">
+    <mat-card-header>
+      <mat-card-title>System Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-table [dataSource]="getSystemInfoRows()" class="system-info-table">
+        <!-- Property Column -->
+        <ng-container matColumnDef="property">
+          <mat-header-cell *matHeaderCellDef>Property</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.property}}</mat-cell>
+        </ng-container>
+        <!-- Value Column -->
+        <ng-container matColumnDef="value">
+          <mat-header-cell *matHeaderCellDef>Value</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.value}}</mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
+</div>

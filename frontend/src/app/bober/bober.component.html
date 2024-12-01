@@ -1,1 +1,35 @@
-<p>bober works!</p>
+<head>
+  <link rel="stylesheet" href="https://lmpixels.com/wp/kerge-wp/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" type="text/css">
+</head>
+<body>
+
+
+<div class="container">
+  <div class="left-panel open">
+    <div class="header-image">
+      <img src="assets/bober.png"/>
+    </div>
+    <div class="site-title">Bober<br/><br/>Stack</div>
+    <ul>
+      <li (click)="selectPage('control')" [ngClass]="{'selected': selectedPage === 'control'}">Control</li>
+      <li (click)="selectPage('metrics')" [ngClass]="{'selected': selectedPage === 'metrics'}">Metrics</li>
+      <li (click)="selectPage('logging')" [ngClass]="{'selected': selectedPage === 'logging'}">Logging</li>
+    </ul>
+
+  </div>
+
+  <div class="right-panel" id="rightPanel"  [ngClass]="currentAnimation">
+    <ng-container *ngIf="selectedPage === 'control'">
+      <app-control-state></app-control-state>
+    </ng-container>
+    <ng-container *ngIf="selectedPage === 'metrics'">
+      <app-metrics></app-metrics>
+    </ng-container>
+    <ng-container *ngIf="selectedPage === 'logging'">
+      <app-logging></app-logging>
+    </ng-container>
+  </div>
+</div>
+</body>
+
