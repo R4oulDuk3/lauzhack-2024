@@ -24,7 +24,7 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public BoberService boberService(ObjectMapper objectMapper, MeterRegistry meterRegistry) {
-        return new BoberService(objectMapper, meterRegistry);
+    public BoberService boberService() {
+        return new BoberService();
     }
 }
