@@ -19,7 +19,7 @@ public class BoberService {
     public BoberService() {
         configData = ConfigData.builder()
                 .speed(10)
-                .power("on")
+                .power("ON")
                 .build();
     }
 
