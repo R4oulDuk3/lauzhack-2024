@@ -1,7 +1,5 @@
 package com.lauzhack.backend.controllers;
 
-import com.lauzhack.backend.models.BoberInputJson;
-import com.lauzhack.backend.models.BoberOutput;
 import com.lauzhack.backend.models.TelemetryData;
 import com.lauzhack.backend.services.BoberService;
 import lombok.AllArgsConstructor;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/bober")
+@CrossOrigin()
 public class BoberController {
 
     BoberService boberService;
@@ -30,7 +29,7 @@ public class BoberController {
 
     @GetMapping
     public ResponseEntity<TelemetryData> getBoberData() {
-        TelemetryData data = boberService.getLocalBoberData();
+        TelemetryData data = boberService.getTelemetryData();
         if (data != null) {
             return ResponseEntity.ok(data);
         }
