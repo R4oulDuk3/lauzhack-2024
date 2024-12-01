@@ -1,0 +1,78 @@
+groups:
+  - name: System rules
+    rules:
+      # CPU Usage Alerts
+      - alert: bobst_pi_cpu_usage_high
+        expr: bobst_pi_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage on Raspberry Pi"
+          description: "CPU usage is above 80% for 5 minutes (current value: {{ $value }}%)"
+
+      - alert: bobst_pi_cpu_usage_critical
+        expr: bobst_pi_cpu_usage_percent > 95
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical CPU usage on Raspberry Pi"
+          description: "CPU usage is above 95% for 5 minutes (current value: {{ $value }}%)"
+
+      # Memory Alerts
+      - alert: bobst_pi_memory_high
+        expr: bobst_pi_memory_percent > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage on Raspberry Pi"
+          description: "Memory usage is above 85% for 5 minutes (current value: {{ $value }}%)"
+
+      - alert: bobst_pi_memory_critical
+        expr: bobst_pi_memory_percent > 95
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical memory usage on Raspberry Pi"
+          description: "Memory usage is above 95% for 5 minutes (current value: {{ $value }}%)"
+
+      # Disk Usage Alerts
+      - alert: bobst_pi_disk_high
+        expr: bobst_pi_disk_percent > 85
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High disk usage on Raspberry Pi"
+          description: "Disk usage is above 85% (current value: {{ $value }}%)"
+
+      - alert: bobst_pi_disk_critical
+        expr: bobst_pi_disk_percent > 95
+        for: 15m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical disk usage on Raspberry Pi"
+          description: "Disk usage is above 95% (current value: {{ $value }}%)"
+
+      # Load Average Alerts
+      - alert: bobst_pi_load_high
+        expr: bobst_pi_load_5min > 4
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High system load on Raspberry Pi"
+          description: "5-minute load average is above 4 (current value: {{ $value }})"
+
+      - alert: bobst_pi_load_critical
+        expr: bobst_pi_load_5min > 8
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical system load on Raspberry Pi"
+          description: "5-minute load average is above 8 (current value: {{ $value }})"
