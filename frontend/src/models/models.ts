@@ -1,10 +1,3 @@
-export interface TelemetryData {
-  timestamp: string;
-  datasource: string;
-  machineid: string;
-  totaloutputunitcount: number;
-  machineSpeed: number;
-}
 
 // models/prometheus.model.ts
 export interface PrometheusQueryResult {
@@ -35,4 +28,15 @@ export interface SystemInfo {
 export interface ConfigData {
   speed: number;
   power: string;
+}
+
+// models/metric.model.ts
+export interface MetricConfig {
+  id: string;           // Unique identifier for the chart
+  query: string;        // Prometheus query
+  title: string;        // Chart title
+  label: string;        // Dataset label
+  color: string;        // Line color
+  maxValue?: number;    // Optional maximum value for y-axis
+  yAxisLabel: string;   // Y-axis label
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {environment} from "../environments/environment";
 import {catchError, Observable} from "rxjs";
-import {ConfigData, PrometheusQueryResult, SystemInfo, TelemetryData} from "../models/models";
+import {ConfigData, PrometheusQueryResult, SystemInfo} from "../models/models";
 import {HttpClient, HttpParams} from '@angular/common/http';
 
 
@@ -17,9 +17,6 @@ export class BoberService {
 
   constructor(private http: HttpClient) { }
 
-  getTelemetryData(): Observable<TelemetryData> {
-    return this.http.get<TelemetryData>(this.apiUrl);
-  }
 
   getSystemInfo(): Observable<SystemInfo> {
     return this.http.get<SystemInfo>(`${this.systemInfoUrl}`)

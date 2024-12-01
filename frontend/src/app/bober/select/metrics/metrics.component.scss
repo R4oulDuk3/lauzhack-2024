@@ -1,14 +1,16 @@
 // metrics.component.scss
 .metrics-container {
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 20px;
 }
+
 .metric-card {
   width: 100%;
   margin-bottom: 20px;
 }
+
 .chart-container {
   position: relative;
   height: 400px;

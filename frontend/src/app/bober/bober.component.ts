@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TelemetryData} from "../../models/models";
 import {BoberService} from "../../service/bober.service";
 
 @Component({
@@ -8,7 +7,6 @@ import {BoberService} from "../../service/bober.service";
   styleUrls: ['./bober.component.scss']
 })
 export class BoberComponent implements OnInit{
-  telemetryData: TelemetryData | null = null;
   error: string | null = null;
 
 
@@ -38,25 +36,6 @@ export class BoberComponent implements OnInit{
   constructor(private boberService: BoberService) {}
 
   ngOnInit(): void {
-    this.loadTelemetryData();
   }
 
-  loadTelemetryData(): void {
-    this.error = null;
-
-    console.log("ZOVEMO KURAC")
-
-    this.boberService.getTelemetryData()
-      .subscribe({
-        next: (data: any) => {
-          console.log("KRUAC STIGAO")
-          console.log(data)
-          this.telemetryData = data;
-        },
-        error: (err: any) => {
-          this.error = 'Failed to load telemetry data';
-          console.error('Error loading telemetry data:', err);
-        }
-      });
-  }
 }
