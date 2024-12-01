@@ -1,1 +1,18 @@
-<p>logging works!</p>
+<div class="terminal">
+    <div class="terminal-header">
+   
+      <span class="terminal-title">Terminal</span>
+    </div>
+    <div class="terminal-body">
+        <div *ngFor="let line of lines" class="terminal-line">
+          <span class="info-type" [ngClass]="line.type">{{ line.type }}</span>
+          <span class="timestamp">{{ line.timestamp }}</span>
+          <span class="message">{{ line.message }}</span>
+        </div>
+        <div class="input-line">
+          <span class="prompt">{{ prompt }}</span>
+          <span class="current-input">{{ currentInput }}</span>
+          <span class="blinking-cursor">_</span>
+        </div>
+      </div>
+  </div>

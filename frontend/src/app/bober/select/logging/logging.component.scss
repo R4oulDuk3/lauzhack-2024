@@ -1,0 +1,119 @@
+$terminal-bg: #1e1e1e;
+$terminal-header-bg: #2a2a2a;
+$text-color: #c5c5c5;
+$dot-red: #ff5f56;
+$dot-yellow: #ffbd2e;
+$dot-green: #27c93f;
+$info-green: #27c93f;
+$warn-yellow: #ffbd2e;
+$err-red: #ff5f56;
+
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: fit-content;
+  
+
+  background-color: $terminal-bg;
+  color: $text-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: $terminal-header-bg;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+
+      &.red {
+        background-color: $dot-red;
+      }
+
+      &.yellow {
+        background-color: $dot-yellow;
+      }
+
+      &.green {
+        background-color: $dot-green;
+      }
+    }
+
+    .terminal-title {
+      margin-right: auto;
+      margin-left: auto;
+      color: $text-color;
+      font-weight: bold;
+    }
+  }
+
+  .terminal-body {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 14px;
+
+    .terminal-line {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 8px;
+
+      .info-type {
+        font-weight: bold;
+        &.INFO {
+          color: $info-green;
+        }
+        &.WARN {
+          color: $warn-yellow;
+        }
+        &.ERR {
+          color: $err-red;
+        }
+      }
+
+      .timestamp {
+        color: $text-color;
+        opacity: 0.7;
+      }
+
+      .message {
+        color: $text-color;
+      }
+    }
+
+    .input-line {
+      display: flex;
+      align-items: center;
+
+      .prompt {
+        color: #8be9fd;
+      }
+
+      .current-input {
+        color: $text-color;
+      }
+
+      .blinking-cursor {
+        color: $text-color;
+        animation: blink 1s step-start infinite;
+      }
+    }
+  }
+}
+
+
+@keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
