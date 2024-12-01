@@ -1,0 +1,125 @@
+// alerts.component.scss
+.alerts-container {
+  padding: 20px;
+
+  .alerts-card {
+    margin-bottom: 20px;
+  }
+
+  .no-alerts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    color: #4caf50;
+
+    mat-icon {
+      font-size: 48px;
+      height: 48px;
+      width: 48px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+
+  .alert-item {
+    width: 100%;
+    padding: 16px 0;
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+
+      mat-icon {
+        margin-right: 8px;
+      }
+
+      .alert-name {
+        font-weight: 500;
+        font-size: 16px;
+      }
+
+      .alert-severity {
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .alert-state {
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        background-color: #f5f5f5;
+      }
+    }
+
+    .alert-details {
+      padding-left: 40px;
+
+      .alert-summary {
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .alert-description {
+        color: rgba(0, 0, 0, 0.67);
+        margin-bottom: 8px;
+      }
+
+      .alert-meta {
+        display: flex;
+        gap: 16px;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+}
+
+// Severity classes
+.severity-critical {
+  mat-icon {
+    color: #f44336;
+  }
+  .alert-severity {
+    background-color: #ffebee;
+    color: #f44336;
+  }
+}
+
+.severity-warning {
+  mat-icon {
+    color: #ff9800;
+  }
+  .alert-severity {
+    background-color: #fff3e0;
+    color: #ff9800;
+  }
+}
+
+.severity-info {
+  mat-icon {
+    color: #2196f3;
+  }
+  .alert-severity {
+    background-color: #e3f2fd;
+    color: #2196f3;
+  }
+}
+
+.severity-default {
+  mat-icon {
+    color: #757575;
+  }
+  .alert-severity {
+    background-color: #f5f5f5;
+    color: #757575;
+  }
+}

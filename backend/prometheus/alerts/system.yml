@@ -10,6 +10,22 @@ groups:
         annotations:
           summary: "High CPU usage on Raspberry Pi"
           description: "CPU usage is above 80% for 5 minutes (current value: {{ $value }}%)"
+      - alert: BobstPiNotRunning
+        expr: bobst_pi_is_running != 1
+        for: 15s
+        labels:
+          severity: error
+        annotations:
+          summary: "Bobst Pi Service Not Running"
+          description: "The Bobst Pi service is not running or has stopped responding. This needs immediate attention."
+      - alert: bobst_pi_cpu_usage_high
+        expr: bobst_pi_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage on Raspberry Pi"
+          description: "CPU usage is above 80% for 5 minutes (current value: {{ $value }}%)"
 
       - alert: bobst_pi_cpu_usage_critical
         expr: bobst_pi_cpu_usage_percent > 95

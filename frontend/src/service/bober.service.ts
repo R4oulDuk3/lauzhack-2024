@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {environment} from "../environments/environment";
-import {catchError, Observable} from "rxjs";
-import {ConfigData, PrometheusQueryResult, SystemInfo} from "../models/models";
+import {catchError, interval, map, Observable, startWith, switchMap} from "rxjs";
+import {ConfigData, PrometheusAlert, PrometheusQueryResult, SystemInfo} from "../models/models";
 import {HttpClient, HttpParams} from '@angular/common/http';
 
 
@@ -87,4 +87,20 @@ export class BoberService {
       value: parseFloat(value)
     }));
   }
+
+  getAlerts(): Observable<PrometheusAlert[]> {
+    return this.http.get<any>(`${this.prometheusUrl}/api/v1/alerts`)
+      .pipe(
+        map(response => response.data.alerts)
+      );
+  }
+
+  // Get real-time updates
+  getAlertsStream(): Observable<PrometheusAlert[]> {
+    return interval(10000).pipe(
+      startWith(0),
+      switchMap(() => this.getAlerts())
+    );
+  }
+
 }

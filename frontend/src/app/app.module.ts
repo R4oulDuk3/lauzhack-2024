@@ -16,6 +16,8 @@ import {FormsModule} from "@angular/forms";
 import {ControlStateComponent} from "./bober/select/control-state/control-state.component";
 import {MetricsComponent} from "./bober/select/metrics/metrics.component";
 import {LoggingComponent} from "./bober/select/logging/logging.component";
+import { AlertsComponent } from './bober/select/alerts/alerts.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {LoggingComponent} from "./bober/select/logging/logging.component";
     BoberComponent,
     ControlStateComponent,
     MetricsComponent,
-    LoggingComponent
+    LoggingComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import {LoggingComponent} from "./bober/select/logging/logging.component";
     MatSlideToggleModule,
     MatSliderModule,
     FormsModule,
+    MatListModule,
     // Make sure this is here
   ],
   providers: [],

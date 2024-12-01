@@ -8,13 +8,23 @@
 <div class="container">
   <div class="left-panel open">
     <div class="header-image">
-      <img src="assets/bober.png"/>
+      <img style="zoom: 150%" src="assets/logo.png"/>
     </div>
     <div class="site-title">Bober<br/><br/>Stack</div>
     <ul>
       <li (click)="selectPage('control')" [ngClass]="{'selected': selectedPage === 'control'}">Control</li>
       <li (click)="selectPage('metrics')" [ngClass]="{'selected': selectedPage === 'metrics'}">Metrics</li>
       <li (click)="selectPage('logging')" [ngClass]="{'selected': selectedPage === 'logging'}">Logging</li>
+      <li (click)="selectPage('alerts')" [ngClass]="{'selected': selectedPage === 'alerts'}">
+        <span class="alert-badge" *ngIf="alertCount > 0">{{alertCount}}</span>
+        Alerts
+      </li>
+
+      <a href="https://ra-develop.iotlab.connect.bobst.com/operator/equipment"
+         target="_blank"
+         class="bobst-link">
+        🅱️ BOBST Platform
+      </a>
     </ul>
 
   </div>
@@ -28,6 +38,9 @@
     </ng-container>
     <ng-container *ngIf="selectedPage === 'logging'">
       <app-logging></app-logging>
+    </ng-container>
+    <ng-container *ngIf="selectedPage === 'alerts'">
+      <app-alerts></app-alerts>
     </ng-container>
   </div>
 </div>

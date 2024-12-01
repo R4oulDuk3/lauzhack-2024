@@ -40,3 +40,21 @@ export interface MetricConfig {
   maxValue?: number;    // Optional maximum value for y-axis
   yAxisLabel: string;   // Y-axis label
 }
+
+// models/alert.model.ts
+export interface PrometheusAlert {
+  labels: {
+    alertname: string;
+    severity: string;
+    instance: string;
+    [key: string]: string;
+  };
+  annotations: {
+    description: string;
+    summary: string;
+    [key: string]: string;
+  };
+  state: string;
+  activeAt: string;
+  value: string;
+}

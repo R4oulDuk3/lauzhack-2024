@@ -5,6 +5,8 @@ html, body {
   box-sizing: border-box;
 }
 
+
+
 .container {
   display: flex;
   width: 100%;
@@ -23,13 +25,28 @@ html, body {
   overflow-y: auto; /* Allows scrolling within left panel if content exceeds viewport */
   z-index: 1; /* Ensures it stays above the right panel */
 }
-/* Right Panel - Scrollable */
 .right-panel {
-  margin-left: 210px; /* Shifts right panel next to the fixed left panel */
+  margin-left: 210px;
   padding-left: 5px;
   flex: 1;
-  overflow-y: auto; /* Enables vertical scrolling */
-  height: 100vh; /* Full viewport height */
+  overflow-y: auto;
+  height: 100vh;
+  position: relative; /* Add this for pseudo-element positioning */
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.50;
+    z-index: -1;
+    pointer-events: none; /* This ensures clicks pass through to the content */
+  }
 }
 
 .hamburger {
@@ -87,6 +104,65 @@ html, body {
   padding: 0;
   text-align: center;
   margin-top: 50px;
+}
+
+.bobst-link {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  white-space: nowrap;
+
+  i {
+    font-size: 14px;
+  }
+
+  &:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+  }
+
+  &:active {
+    transform: translateX(-50%) translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// app.component.scss
+li {
+  position: relative;
+
+  .alert-badge {
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    padding: 2px;
+    font-weight: bold;
+  }
 }
 
 .left-panel li {

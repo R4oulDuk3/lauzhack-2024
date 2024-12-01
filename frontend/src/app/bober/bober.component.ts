@@ -8,7 +8,7 @@ import {BoberService} from "../../service/bober.service";
 })
 export class BoberComponent implements OnInit{
   error: string | null = null;
-
+  alertCount = 0;
 
   selectedPage: string = 'control';
   currentAnimation: string = '';
@@ -33,7 +33,11 @@ export class BoberComponent implements OnInit{
     }
   }
 
-  constructor(private boberService: BoberService) {}
+  constructor(private boberService: BoberService) {
+    this.boberService.getAlertsStream().subscribe(alerts => {
+      this.alertCount = alerts.filter(alert => alert.state === 'firing').length;
+    });
+  }
 
   ngOnInit(): void {
   }

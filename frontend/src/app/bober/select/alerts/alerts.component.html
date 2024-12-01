@@ -1,0 +1,40 @@
+<!-- alerts.component.html -->
+<div class="alerts-container">
+  <mat-card class="alerts-card">
+    <mat-card-header>
+      <mat-card-title>Active Alerts</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="alerts.length === 0" class="no-alerts">
+        <mat-icon>check_circle</mat-icon>
+        <p>No active alerts</p>
+      </div>
+
+      <mat-list *ngIf="alerts.length > 0">
+        <mat-list-item *ngFor="let alert of alerts" [ngClass]="getSeverityClass(alert.labels.severity)">
+          <div class="alert-item">
+            <div class="alert-header">
+              <mat-icon [ngClass]="getSeverityClass(alert.labels.severity)">
+                {{alert.state === 'firing' ? 'warning' : 'info'}}
+              </mat-icon>
+              <span class="alert-name">{{alert.labels.alertname}}</span>
+              <span class="alert-severity">{{alert.labels.severity}}</span>
+              <span class="alert-state">{{alert.state}}</span>
+            </div>
+
+            <div class="alert-details">
+              <p class="alert-summary">{{alert.annotations.summary}}</p>
+              <p class="alert-description">{{alert.annotations.description}}</p>
+              <div class="alert-meta">
+                <span class="alert-instance">Instance: {{alert.labels.instance}}</span>
+                <span class="alert-time">Since: {{formatTimestamp(alert.activeAt)}}</span>
+              </div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
